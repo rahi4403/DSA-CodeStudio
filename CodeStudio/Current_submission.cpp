@@ -1,9 +1,17 @@
-int linearSearch(int *arr, int n, int x)
+Node* reverseLinkedList(Node *head)
 {
-  for(int i=0;i<n;i++){
-      if(arr[i]==x){
-          return i;
-      }
-  }  
-  return -1;
+    if(head==NULL || head->next==NULL){
+        return head;
+    }
+    Node* prev=NULL;
+    Node* curr=head;
+    Node* temp=NULL;
+    while(curr!=NULL){
+        temp=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=temp;
+    }
+    return prev;
 }
+ 
