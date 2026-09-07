@@ -1,23 +1,23 @@
-bool isPalindrome(Node *head)
-{
-    if(head==NULL || head-> next==NULL){
-    return head;
+#include <bits/stdc++.h>
+ 
+LinkedListNode<int>* getMid(LinkedListNode<int>* head) {
+    LinkedListNode<int>* slow = head;
+    LinkedListNode<int>* fast = head->next;
+ 
+    while (fast != NULL && fast->next != NULL) {
+        fast = fast->next->next;
+        slow = slow->next;
     }
-   Node* slow=head;
-   Node* fast=head;
-   while(fast->next!=NULL && fast->next->next!=NULL){
-       slow=slow->next;
-       fast=fast->next->next;
-   }
-   Node* prev=NULL;
-   Node* curr=slow->next;
-   while(curr!=NULL){
-       Node* temp=curr->next;
-       curr->next=prev;
-       prev=curr;
-       curr=temp;
-   }
-   Node* first=head;
-   Node* second=prev;
-   while(second!=NULL){
-       if(first->data!=second->data){
+ 
+    return slow;
+}
+ 
+LinkedListNode<int>* reverse(LinkedListNode<int>* head) {
+    LinkedListNode<int>* curr = head;
+    LinkedListNode<int>* prev = NULL;
+    LinkedListNode<int>* next = NULL;
+ 
+    while (curr != NULL) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
