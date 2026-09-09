@@ -1,23 +1,24 @@
-#include <bits/stdc++.h>
+    // Base cases must come first
+    if(first == NULL)
+        return second;
  
-LinkedListNode<int>* getMid(LinkedListNode<int>* head) {
-    LinkedListNode<int>* slow = head;
-    LinkedListNode<int>* fast = head->next;
+    if(second == NULL)
+        return first;
  
-    while (fast != NULL && fast->next != NULL) {
-        fast = fast->next->next;
-        slow = slow->next;
+    // Make sure first starts with the smaller value
+    if(first->data > second->data)
+    {
+        return sortTwoLists(second, first);
     }
  
-    return slow;
+    Node<int>* curr1 = first;
+    Node<int>* next1 = curr1->next;
+    Node<int>* curr2 = second;
+    Node<int>* next2 = curr2->next;
+if(next1 == NULL)
+    while(next1 != NULL && curr2 != NULL)
+    {
+{
+    curr1->next = curr2;
+    return first;
 }
- 
-LinkedListNode<int>* reverse(LinkedListNode<int>* head) {
-    LinkedListNode<int>* curr = head;
-    LinkedListNode<int>* prev = NULL;
-    LinkedListNode<int>* next = NULL;
- 
-    while (curr != NULL) {
-        next = curr->next;
-        curr->next = prev;
-        prev = curr;
