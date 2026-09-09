@@ -1,3 +1,7 @@
+#include <bits/stdc++.h>
+ 
+Node<int>* sortTwoLists(Node<int>* first, Node<int>* second)
+{
     // Base cases must come first
     if(first == NULL)
         return second;
@@ -16,9 +20,4 @@
     Node<int>* curr2 = second;
     Node<int>* next2 = curr2->next;
 if(next1 == NULL)
-    while(next1 != NULL && curr2 != NULL)
-    {
 {
-    curr1->next = curr2;
-    return first;
-}
