@@ -1,17 +1,21 @@
 #include <bits/stdc++.h> 
-void Solve(stack<int>& s,int x){
-    if(s.empty()){ //check if stack is already empty,insert element directly
-        s.push(x);
+void sortedInsert(stack<int> &s,int num){
+    if(s.empty()||s.top()<num){
+        s.push(num);
         return;
     }
-    int num=s.top(); //if not empty,empty it one by one from the top,insert element at bottom
+    int n=s.top();
     s.pop();
-    Solve(s,x);
-    s.push(num); //place the elements at top again
+    sortedInsert(s,num);
+    s.push(n);
 }
-stack<int> pushAtBottom(stack<int>& myStack, int x) 
+void sortStack(stack<int> &stack)
 {
-Solve(myStack,x);
-return myStack;
+if(stack.empty()){
+    return;
 }
- 
+int num=stack.top();
+stack.pop();
+sortStack(stack);
+sortedInsert(stack,num);
+}
