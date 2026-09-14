@@ -1,19 +1,21 @@
-void insertAtBottom(stack <int> &s,int element){
-    if(s.empty()){
-        s.push(element);
+#include <bits/stdc++.h> 
+void sortedInsert(stack<int> &s,int num){
+    if(s.empty()||s.top()<num){
+        s.push(num);
         return;
     }
-int num=s.top();
-s.pop();
-insertAtBottom(s,element);
-s.push(num);
+    int n=s.top();
+    s.pop();
+    sortedInsert(s,num);
+    s.push(n);
 }
-void reverseStack(stack<int> &stack) {
+void sortStack(stack<int> &stack)
+{
 if(stack.empty()){
     return;
 }
 int num=stack.top();
 stack.pop();
-reverseStack(stack);
-insertAtBottom(stack,num);
+sortStack(stack);
+sortedInsert(stack,num);
 }
