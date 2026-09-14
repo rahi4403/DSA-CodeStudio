@@ -1,23 +1,23 @@
 #include <bits/stdc++.h> 
-bool findRedundantBrackets(string &s)
-{
-stack<char> st;
-for(int i=0;i<s.length();i++){
-    char ch=s[i];
-    if(ch=='('||ch=='+'||ch=='-'||ch=='*'||ch=='/')
-    st.push(ch);
-else{
-    if(ch==')'){
-        bool isRedundant=true;
-        while(st.top()!='('){
-            char top=st.top();
-                if(top=='+'||top=='-'||top=='*'||top=='/'){
-                    isRedundant=false;
-                }
-                st.pop();
-        }
-        if(isRedundant==true)
-        return true;
-        st.pop();
+int findMinimumCost(string str) {
+if(str.length()%2==1){
+  return -1;
+}
+stack<char> s;
+for(int i=0;i<str.length();i++){
+  char ch=str[i];
+  if(ch=='{')
+  s.push(ch);
+  else{
+    if(!s.empty() && s.top()=='{'){
+      s.pop();
     }
+    else{
+      s.push(ch);
     }
+  }
+}
+int a=0,b=0;
+while(!s.empty()){
+  if(s.top()=='{'){
+    b++;
