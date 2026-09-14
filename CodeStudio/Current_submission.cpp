@@ -1,21 +1,23 @@
 #include <bits/stdc++.h> 
-void sortedInsert(stack<int> &s,int num){
-    if(s.empty()||s.top()<num){
-        s.push(num);
-        return;
-    }
-    int n=s.top();
-    s.pop();
-    sortedInsert(s,num);
-    s.push(n);
-}
-void sortStack(stack<int> &stack)
+bool findRedundantBrackets(string &s)
 {
-if(stack.empty()){
-    return;
-}
-int num=stack.top();
-stack.pop();
-sortStack(stack);
-sortedInsert(stack,num);
-}
+stack<char> st;
+for(int i=0;i<s.length();i++){
+    char ch=s[i];
+    if(ch=='('||ch=='+'||ch=='-'||ch=='*'||ch=='/')
+    st.push(ch);
+else{
+    if(ch==')'){
+        bool isRedundant=true;
+        while(st.top()!='('){
+            char top=st.top();
+                if(top=='+'||top=='-'||top=='*'||top=='/'){
+                    isRedundant=false;
+                }
+                st.pop();
+        }
+        if(isRedundant==true)
+        return true;
+        st.pop();
+    }
+    }
