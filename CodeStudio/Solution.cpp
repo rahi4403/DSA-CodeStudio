@@ -1,21 +1,21 @@
-int getLength(Node *head){
-    int len=0;
-    while(head!=NULL){
-        len++;
-        head=head->next;
+#include <bits/stdc++.h> 
+void sortedInsert(stack<int> &s,int num){
+    if(s.empty()||s.top()<num){
+        s.push(num);
+        return;
     }
-    return len;
+    int n=s.top();
+    s.pop();
+    sortedInsert(s,num);
+    s.push(n);
 }
-Node *findMiddle(Node *head) {
-int l=getLength(head);
-int ans=l/2;
-Node* temp=head;
-int c=0;
-while(c<ans){
-    temp=temp->next;
-    c++;
+void sortStack(stack<int> &stack)
+{
+if(stack.empty()){
+    return;
 }
-return temp;
+int num=stack.top();
+stack.pop();
+sortStack(stack);
+sortedInsert(stack,num);
 }
- 
- 
