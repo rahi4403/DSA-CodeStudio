@@ -1,21 +1,24 @@
-#include <bits/stdc++.h> 
-void sortedInsert(stack<int> &s,int num){
-    if(s.empty()||s.top()<num){
-        s.push(num);
-        return;
+#include <bits/stdc++.h>
+ 
+LinkedListNode<int>* getMid(LinkedListNode<int>* head) {
+    LinkedListNode<int>* slow = head;
+    LinkedListNode<int>* fast = head->next;
+ 
+    while (fast != NULL && fast->next != NULL) {
+        fast = fast->next->next;
+        slow = slow->next;
     }
-    int n=s.top();
-    s.pop();
-    sortedInsert(s,num);
-    s.push(n);
+ 
+    return slow;
 }
-void sortStack(stack<int> &stack)
-{
-if(stack.empty()){
-    return;
-}
-int num=stack.top();
-stack.pop();
-sortStack(stack);
-sortedInsert(stack,num);
-}
+ 
+LinkedListNode<int>* reverse(LinkedListNode<int>* head) {
+    LinkedListNode<int>* curr = head;
+    LinkedListNode<int>* prev = NULL;
+    LinkedListNode<int>* next = NULL;
+ 
+    while (curr != NULL) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
